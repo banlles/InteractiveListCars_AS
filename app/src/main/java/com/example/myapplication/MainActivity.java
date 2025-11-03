@@ -12,14 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String[] myDataSet = {
-            "PHP",
-            "Javascript",
-            "Go",
-            "Python"
-
-    };
-
+   private Vehiculo[] myDataSet = {
+            new Vehiculo("Ford", "Rojo", "4"),
+            new Vehiculo("Chevrolet", "Azul", "2"),
+            new Vehiculo("Toyota", "Blanco", "4")};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

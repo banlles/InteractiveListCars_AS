@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class MyRVAdapter extends RecyclerView.Adapter<MyRVAdapter.MyViewHolder> {
-    String[] dades;
+    Vehiculo[] vehiculos;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
@@ -26,15 +26,15 @@ public class MyRVAdapter extends RecyclerView.Adapter<MyRVAdapter.MyViewHolder> 
     }
 
     // Se llamara desde el ItemClickListener implementado en la Actividad contenedora
-    public String getItem(int position) {
-        return dades[position];
+    public Vehiculo getItem(int position) {
+        return vehiculos[position];
     }
 
     // Constructor, los datos los recibimos en el constructor.
-    public MyRVAdapter(Context context, String[] dades) {
+    public MyRVAdapter(Context context, Vehiculo[] vehiculos) {
         super();
         this.mInflater = LayoutInflater.from(context);
-        this.dades = dades;
+        this.vehiculos = vehiculos;
     }
 
     // ----------METODOS QUE HAY QUE SOBRECARGAR DE LA CLASE RecyclerView.Adapter<> ----------
@@ -48,26 +48,30 @@ public class MyRVAdapter extends RecyclerView.Adapter<MyRVAdapter.MyViewHolder> 
     // Binds (vincula) los datos al Textview para cada item
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        String llenguatge = dades[position];
-        holder.tvAutor.setText(llenguatge);
+        Vehiculo v = vehiculos[position];
+        holder.marca.setText(v.getMarca());
+        holder.color.setText(v.getColor());
+        holder.puertas.setText(v.getPuertas());
     }
 
     // Número total de items
     @Override
     public int getItemCount() {
-        return dades.length;
+        return vehiculos.length;
     }
 
     // ---------------------------------------------------------------------------------------
     // --------- IMPLEMENTACION DE NUESTRO VIEW HOLDER ESPECÍFICO ----------------------------
     // stores and recycles views as they are scrolled off screen
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView tvAutor;
+        TextView marca, color, puertas;
 
         MyViewHolder(View itemView) {
             //Lligar els Id dels elements que vull mostrar per pantalla per cada un dels elements de Dades
             super(itemView);
-            tvAutor = itemView.findViewById(R.id.tvName);
+            marca = itemView.findViewById(R.id.textViewMarca);
+            color = itemView.findViewById(R.id.textViewColor);
+            puertas = itemView.findViewById(R.id.textViewPuertas);
             itemView.setOnClickListener(this);
         }
 
