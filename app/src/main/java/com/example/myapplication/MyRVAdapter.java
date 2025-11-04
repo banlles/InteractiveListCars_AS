@@ -4,9 +4,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class MyRVAdapter extends RecyclerView.Adapter<MyRVAdapter.MyViewHolder> {
@@ -49,9 +49,9 @@ public class MyRVAdapter extends RecyclerView.Adapter<MyRVAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Vehiculo v = vehiculos[position];
+        holder.img.setImageResource(v.getImagen());
         holder.marca.setText(v.getMarca());
-        holder.color.setText(v.getColor());
-        holder.puertas.setText(v.getPuertas());
+        holder.modelo.setText(v.getModelo());
     }
 
     // Número total de items
@@ -64,14 +64,15 @@ public class MyRVAdapter extends RecyclerView.Adapter<MyRVAdapter.MyViewHolder> 
     // --------- IMPLEMENTACION DE NUESTRO VIEW HOLDER ESPECÍFICO ----------------------------
     // stores and recycles views as they are scrolled off screen
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView marca, color, puertas;
+        TextView marca, modelo;
+        ImageView img;
 
         MyViewHolder(View itemView) {
             //Lligar els Id dels elements que vull mostrar per pantalla per cada un dels elements de Dades
             super(itemView);
+            img = itemView.findViewById(R.id.imagenViewVehiculo);
+            modelo = itemView.findViewById(R.id.textViewModelo);
             marca = itemView.findViewById(R.id.textViewMarca);
-            color = itemView.findViewById(R.id.textViewColor);
-            puertas = itemView.findViewById(R.id.textViewPuertas);
             itemView.setOnClickListener(this);
         }
 

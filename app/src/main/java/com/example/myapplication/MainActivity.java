@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,12 +12,9 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MyRVAdapter.ItemClickListener{
+    Vehiculo[] v = ArrayVehiculos.getVehiculos();
 
-   private Vehiculo[] myDataSet = {
-            new Vehiculo("Ford", "Rojo", "4"),
-            new Vehiculo("Chevrolet", "Azul", "2"),
-            new Vehiculo("Toyota", "Blanco", "4")};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,9 +27,14 @@ public class MainActivity extends AppCompatActivity {
         rc.setLayoutManager(layoutManager);
 
         // Asociamos un adapter (ver más adelante cómo definirlo)
-        MyRVAdapter mAdapter = new MyRVAdapter(MainActivity.this,myDataSet);
+        MyRVAdapter mAdapter = new MyRVAdapter(MainActivity.this, v);
         rc.setAdapter(mAdapter);
 
 
+    }
+
+
+   @Override
+    public void onRVItemClick(View view, int position) {
     }
 }
