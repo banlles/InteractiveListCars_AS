@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements MyRVAdapter.OnIte
         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         rc.setLayoutManager(layoutManager);
 
-        // Asociamos un adapter (ver más adelante cómo definirlo)
+        // Asociamos un adapter (ver más adelante cómo definirlo)a
         MyRVAdapter mAdapter = new MyRVAdapter(MainActivity.this, c, this);
         rc.setAdapter(mAdapter);
 
