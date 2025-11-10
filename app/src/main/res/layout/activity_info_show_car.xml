@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".InfoShowCar">
+
+        <!-- IMAGEN: ancho completo + ratio fijo para que no empuje el texto -->
+        <ImageView
+            android:id="@+id/ShowInfoImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/ShowInfoMarca"
+            app:layout_constraintDimensionRatio="16:9"
+            app:srcCompat="@drawable/ic_launcher_background"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+        <!-- MARCA -->
+        <TextView
+            android:id="@+id/ShowInfoMarca"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="12dp"
+            android:text="Marca"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@id/ShowInfoImage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Marca: Ford" />
+
+        <!-- MODELO -->
+        <TextView
+            android:id="@+id/ShowInfoModelo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="8dp"
+            android:text="Modelo"
+            android:textAlignment="center"
+            app:layout_constraintTop_toBottomOf="@id/ShowInfoMarca"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Modelo: Focus" />
+
+        <!-- TIPO MOTOR -->
+        <TextView
+            android:id="@+id/ShowInfoITipoMotor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="8dp"
+            android:text="Tipo motor"
+            android:textAlignment="center"
+            app:layout_constraintTop_toBottomOf="@id/ShowInfoModelo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Motor: Gasolina" />
+
+        <!-- POTENCIA -->
+        <TextView
+            android:id="@+id/ShowInfoPotencia"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="8dp"
+            android:text="Potencia"
+            android:textAlignment="center"
+            app:layout_constraintTop_toBottomOf="@id/ShowInfoITipoMotor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Potencia: 120 CV" />
+
+        <!-- PUERTAS -->
+        <TextView
+            android:id="@+id/ShowInfoPuertas"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="8dp"
+            android:text="Puertas"
+            android:textAlignment="center"
+            app:layout_constraintTop_toBottomOf="@id/ShowInfoPotencia"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Puertas: 5" />
+
+        <!-- TRANSMISIÓN -->
+        <TextView
+            android:id="@+id/ShowInfoTransmision"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="8dp"
+            android:text="Transmisión"
+            android:textAlignment="center"
+            app:layout_constraintTop_toBottomOf="@id/ShowInfoPuertas"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Transmisión: Manual" />
+
+        <!-- TEXTO EXTRA (si lo usas para mostrar el id del drawable o similar) -->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

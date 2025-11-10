@@ -10,31 +10,28 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class MyRVAdapter extends RecyclerView.Adapter<MyRVAdapter.MyViewHolder> {
-    Vehiculo[] vehiculos;
+    Car[] vehiculos;
     private LayoutInflater mInflater;
-    private ItemClickListener mClickListener;
+    private OnItemClickListener listener;
+
 
     // La actividad que contenga el RecyclerViewer va a tener que implementar esta interfaz
     // para recibir los clicks en los items de nuestro recycler view.
-    public interface ItemClickListener {
-        void onRVItemClick(View view, int position);
-    }
-
-    // El Activity que incluya el Recycler View que utilice este adapter llamará a este metodo para indicar que es el listener.
-    void setClickListener(ItemClickListener itemClickListener) {
-        this.mClickListener = itemClickListener;
+    public interface OnItemClickListener {
+        void onItemClick(int position);
     }
 
     // Se llamara desde el ItemClickListener implementado en la Actividad contenedora
-    public Vehiculo getItem(int position) {
+    public Car getItem(int position) {
         return vehiculos[position];
     }
 
     // Constructor, los datos los recibimos en el constructor.
-    public MyRVAdapter(Context context, Vehiculo[] vehiculos) {
+    public MyRVAdapter(Context context, Car[] vehiculos, OnItemClickListener listener) {
         super();
         this.mInflater = LayoutInflater.from(context);
         this.vehiculos = vehiculos;
+        this.listener = listener;
     }
 
     // ----------METODOS QUE HAY QUE SOBRECARGAR DE LA CLASE RecyclerView.Adapter<> ----------
@@ -48,7 +45,7 @@ public class MyRVAdapter extends RecyclerView.Adapter<MyRVAdapter.MyViewHolder> 
     // Binds (vincula) los datos al Textview para cada item
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Vehiculo v = vehiculos[position];
+        Car v = vehiculos[position];
         holder.img.setImageResource(v.getImagen());
         holder.marca.setText(v.getMarca());
         holder.modelo.setText(v.getModelo());
@@ -63,7 +60,7 @@ public class MyRVAdapter extends RecyclerView.Adapter<MyRVAdapter.MyViewHolder> 
     // ---------------------------------------------------------------------------------------
     // --------- IMPLEMENTACION DE NUESTRO VIEW HOLDER ESPECÍFICO ----------------------------
     // stores and recycles views as they are scrolled off screen
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView marca, modelo;
         ImageView img;
 
@@ -73,13 +70,14 @@ public class MyRVAdapter extends RecyclerView.Adapter<MyRVAdapter.MyViewHolder> 
             img = itemView.findViewById(R.id.imagenViewVehiculo);
             modelo = itemView.findViewById(R.id.textViewModelo);
             marca = itemView.findViewById(R.id.textViewMarca);
-            itemView.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View view) {
-            if (mClickListener != null)
-                mClickListener.onRVItemClick(view, getAdapterPosition());
+            itemView.setOnClickListener(v -> {
+                if (listener != null) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        listener.onItemClick(position);
+                    }
+                }
+            });
         }
     }
 }
