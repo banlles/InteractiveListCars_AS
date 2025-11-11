@@ -16,13 +16,13 @@ public class InfoShowCar extends AppCompatActivity {
         Car car = getIntent().getParcelableExtra("car");
         if (car == null) return;
 
-        TextView marca       = findViewById(R.id.ShowInfoMarca);
-        TextView modelo      = findViewById(R.id.ShowInfoModelo);
-        TextView tipoMotor   = findViewById(R.id.ShowInfoITipoMotor);
+        TextView marca = findViewById(R.id.ShowInfoMarca);
+        TextView modelo = findViewById(R.id.ShowInfoModelo);
+        TextView tipoMotor = findViewById(R.id.ShowInfoITipoMotor);
         TextView potencia = findViewById(R.id.ShowInfoPotencia);
-        TextView puertas   = findViewById(R.id.ShowInfoPuertas);
+        TextView puertas = findViewById(R.id.ShowInfoPuertas);
         TextView transmision = findViewById(R.id.ShowInfoTransmision);
-        ImageView imagen     = findViewById(R.id.ShowInfoImage);
+        ImageView imagen = findViewById(R.id.ShowInfoImage);
 
         marca.setText(car.getMarca());
         modelo.setText(car.getModelo());

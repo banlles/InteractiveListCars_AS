@@ -24,29 +24,65 @@ public class Car implements Parcelable {
     }
 
     // Constructor vacío (por si lo necesitas)
-    public Car() {}
+    public Car() {
+    }
 
     // Getters y setters
-    public String getMarca() { return marca; }
-    public void setMarca(String marca) { this.marca = marca; }
+    public String getMarca() {
+        return marca;
+    }
 
-    public String getModelo() { return modelo; }
-    public void setModelo(String modelo) { this.modelo = modelo; }
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
 
-    public String getTipoMotor() { return tipoMotor; }
-    public void setTipoMotor(String tipoMotor) { this.tipoMotor = tipoMotor; }
+    public String getModelo() {
+        return modelo;
+    }
 
-    public int getPotencia() { return potencia; }
-    public void setPotencia(int potencia) { this.potencia = potencia; }
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
 
-    public int getPuertas() { return puertas; }
-    public void setPuertas(int puertas) { this.puertas = puertas; }
+    public String getTipoMotor() {
+        return tipoMotor;
+    }
 
-    public String getTransmision() { return transmision; }
-    public void setTransmision(String transmision) { this.transmision = transmision; }
+    public void setTipoMotor(String tipoMotor) {
+        this.tipoMotor = tipoMotor;
+    }
 
-    public int getImagen() { return imagen; }
-    public void setImagen(int imagen) { this.imagen = imagen; }
+    public int getPotencia() {
+        return potencia;
+    }
+
+    public void setPotencia(int potencia) {
+        this.potencia = potencia;
+    }
+
+    public int getPuertas() {
+        return puertas;
+    }
+
+    public void setPuertas(int puertas) {
+        this.puertas = puertas;
+    }
+
+    public String getTransmision() {
+        return transmision;
+    }
+
+    public void setTransmision(String transmision) {
+        this.transmision = transmision;
+    }
+
+    public int getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(int imagen) {
+        this.imagen = imagen;
+    }
 
     // ------------------------------------------------------------
     // ----------- IMPLEMENTACIÓN DE PARCELABLE -------------------
