@@ -5,123 +5,244 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="24dp"
         tools:context=".InfoShowCar">
 
-        <!-- IMAGEN: ancho completo + ratio fijo para que no empuje el texto -->
-        <ImageView
-            android:id="@+id/ShowInfoImage"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:contentDescription="@string/app_name"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/ShowInfoMarca"
-            app:layout_constraintDimensionRatio="16:9"
-            app:srcCompat="@drawable/ic_launcher_background"
-            tools:srcCompat="@tools:sample/backgrounds/scenic" />
-
-        <!-- MARCA -->
         <TextView
-            android:id="@+id/ShowInfoMarca"
+            android:id="@+id/infoTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:text="Detalles del vehículo"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:letterSpacing="0.2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/infoSubtitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:paddingTop="12dp"
-            android:text="Marca"
-            android:textAlignment="center"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            app:layout_constraintTop_toBottomOf="@id/ShowInfoImage"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="4dp"
+            android:fontFamily="sans-serif"
+            android:text="Explora en detalle las especificaciones y el estilo de tu coche."
+            android:textColor="#E6FFFFFF"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:text="Marca: Ford" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/infoTitle" />
 
-        <!-- MODELO -->
-        <TextView
-            android:id="@+id/ShowInfoModelo"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/infoCard"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:paddingTop="8dp"
-            android:text="Modelo"
-            android:textAlignment="center"
-            app:layout_constraintTop_toBottomOf="@id/ShowInfoMarca"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            app:cardBackgroundColor="#121B2E"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="12dp"
+            app:cardUseCompatPadding="false"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:text="Modelo: Focus" />
-
-        <!-- TIPO MOTOR -->
-        <TextView
-            android:id="@+id/ShowInfoITipoMotor"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:paddingTop="8dp"
-            android:text="Tipo motor"
-            android:textAlignment="center"
-            app:layout_constraintTop_toBottomOf="@id/ShowInfoModelo"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:text="Motor: Gasolina" />
+            app:layout_constraintTop_toBottomOf="@id/infoSubtitle"
+            app:strokeColor="#3387A6FF"
+            app:strokeWidth="1dp">
 
-        <!-- POTENCIA -->
-        <TextView
-            android:id="@+id/ShowInfoPotencia"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:paddingTop="8dp"
-            android:text="Potencia"
-            android:textAlignment="center"
-            app:layout_constraintTop_toBottomOf="@id/ShowInfoITipoMotor"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:text="Potencia: 120 CV" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-        <!-- PUERTAS -->
-        <TextView
-            android:id="@+id/ShowInfoPuertas"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:paddingTop="8dp"
-            android:text="Puertas"
-            android:textAlignment="center"
-            app:layout_constraintTop_toBottomOf="@id/ShowInfoPotencia"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:text="Puertas: 5" />
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_mask"
+                    android:clipToOutline="true"
+                    android:minHeight="220dp">
 
-        <!-- TRANSMISIÓN -->
-        <TextView
-            android:id="@+id/ShowInfoTransmision"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:paddingTop="8dp"
-            android:text="Transmisión"
-            android:textAlignment="center"
-            app:layout_constraintTop_toBottomOf="@id/ShowInfoPuertas"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:text="Transmisión: Manual" />
+                    <ImageView
+                        android:id="@+id/ShowInfoImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/app_name"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_launcher_background"
+                        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
-        <!-- TEXTO EXTRA (si lo usas para mostrar el id del drawable o similar) -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_header_scrim" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="20dp"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="20dp">
+
+                        <TextView
+                            android:id="@+id/ShowInfoMarca"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="Marca"
+                            android:textColor="@android:color/white"
+                            android:textSize="22sp"
+                            android:textStyle="bold"
+                            tools:text="Mercedes-Benz" />
+
+                        <TextView
+                            android:id="@+id/ShowInfoModelo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="Modelo"
+                            android:textColor="#B3FFFFFF"
+                            android:textSize="16sp"
+                            tools:text="GLA 250 4MATIC" />
+
+                    </LinearLayout>
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical"
+                    android:paddingBottom="20dp">
+
+                    <TextView
+                        android:id="@+id/specsTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="Especificaciones destacadas"
+                        android:textAllCaps="true"
+                        android:textColor="#80FFFFFF"
+                        android:textSize="12sp"
+                        android:letterSpacing="0.15" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/ShowInfoITipoMotor"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="12dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_spec_chip"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:paddingVertical="12dp"
+                            android:text="Tipo motor"
+                            android:textColor="#F0FFFFFF"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            tools:text="Gasolina" />
+
+                        <TextView
+                            android:id="@+id/ShowInfoPotencia"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_spec_chip"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:paddingVertical="12dp"
+                            android:text="Potencia"
+                            android:textColor="#F0FFFFFF"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            tools:text="258 CV" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/ShowInfoPuertas"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="12dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_spec_chip"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:paddingVertical="12dp"
+                            android:text="Puertas"
+                            android:textColor="#F0FFFFFF"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            tools:text="5" />
+
+                        <TextView
+                            android:id="@+id/ShowInfoTransmision"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_spec_chip"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:paddingVertical="12dp"
+                            android:text="Transmisión"
+                            android:textColor="#F0FFFFFF"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            tools:text="Automática" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/specsFootnote"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:fontFamily="sans-serif"
+                        android:text="Disfruta de un interior premium, conectividad avanzada y la potencia que necesitas para cada trayecto."
+                        android:textColor="#9EB3FF"
+                        android:textSize="14sp"
+                        android:lineSpacingExtra="4dp"
+                        tools:ignore="HardcodedText" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.core.widget.NestedScrollView>
