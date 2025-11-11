@@ -9,8 +9,10 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+
 public class MyRVAdapter extends RecyclerView.Adapter<MyRVAdapter.MyViewHolder> {
-    Car[] vehiculos;
+    ArrayList<Car> vehiculos;
     private LayoutInflater mInflater;
     private OnItemClickListener listener;
 
@@ -23,11 +25,11 @@ public class MyRVAdapter extends RecyclerView.Adapter<MyRVAdapter.MyViewHolder> 
 
     // Se llamara desde el ItemClickListener implementado en la Actividad contenedora
     public Car getItem(int position) {
-        return vehiculos[position];
+        return vehiculos.get(position);
     }
 
     // Constructor, los datos los recibimos en el constructor.
-    public MyRVAdapter(Context context, Car[] vehiculos, OnItemClickListener listener) {
+    public MyRVAdapter(Context context, ArrayList<Car> vehiculos, OnItemClickListener listener) {
         super();
         this.mInflater = LayoutInflater.from(context);
         this.vehiculos = vehiculos;
@@ -45,7 +47,7 @@ public class MyRVAdapter extends RecyclerView.Adapter<MyRVAdapter.MyViewHolder> 
     // Binds (vincula) los datos al Textview para cada item
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Car v = vehiculos[position];
+        Car v = vehiculos.get(position);
         holder.img.setImageResource(v.getImagen());
         holder.marca.setText(v.getMarca());
         holder.modelo.setText(v.getModelo());
@@ -54,22 +56,24 @@ public class MyRVAdapter extends RecyclerView.Adapter<MyRVAdapter.MyViewHolder> 
     // Número total de items
     @Override
     public int getItemCount() {
-        return vehiculos.length;
+        return vehiculos.size();
     }
 
     // ---------------------------------------------------------------------------------------
     // --------- IMPLEMENTACION DE NUESTRO VIEW HOLDER ESPECÍFICO ----------------------------
-    // stores and recycles views as they are scrolled off screen
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView marca, modelo;
         ImageView img;
 
         MyViewHolder(View itemView) {
-            //Lligar els Id dels elements que vull mostrar per pantalla per cada un dels elements de Dades
             super(itemView);
+
+            //Vincular las variables a sus respecticas ID
             img = itemView.findViewById(R.id.imagenViewVehiculo);
             modelo = itemView.findViewById(R.id.textViewModelo);
             marca = itemView.findViewById(R.id.textViewMarca);
+
+            //Mandar la posición de la tarjeta que se ha pulsado
             itemView.setOnClickListener(v -> {
                 if (listener != null) {
                     int position = getAdapterPosition();

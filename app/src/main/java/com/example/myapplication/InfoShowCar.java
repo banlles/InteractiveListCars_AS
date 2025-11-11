@@ -21,7 +21,7 @@ public class InfoShowCar extends AppCompatActivity {
         TextView tipoMotor   = findViewById(R.id.ShowInfoITipoMotor);
         TextView potencia = findViewById(R.id.ShowInfoPotencia);
         TextView puertas   = findViewById(R.id.ShowInfoPuertas);
-        TextView transmision = findViewById(R.id.ShowInfoTransmision); // ✅ id correcto
+        TextView transmision = findViewById(R.id.ShowInfoTransmision);
         ImageView imagen     = findViewById(R.id.ShowInfoImage);
 
         marca.setText(car.getMarca());
