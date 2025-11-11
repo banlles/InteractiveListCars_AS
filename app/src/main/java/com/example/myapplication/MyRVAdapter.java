@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -51,6 +52,19 @@ public class MyRVAdapter extends RecyclerView.Adapter<MyRVAdapter.MyViewHolder> 
         holder.img.setImageResource(v.getImagen());
         holder.marca.setText(v.getMarca());
         holder.modelo.setText(v.getModelo());
+
+        holder.engineBadge.setVisibility(View.GONE);
+
+        String tipoMotor = v.getTipoMotor();
+            if (tipoMotor.contains("Gasolina")) {
+                holder.engineBadge.setText("G");
+                holder.engineBadge.setBackgroundResource(R.drawable.bg_engine_badge_gasoline);
+                holder.engineBadge.setVisibility(View.VISIBLE);
+            } else if (tipoMotor.contains("Diesel")) {
+                holder.engineBadge.setText("D");
+                holder.engineBadge.setBackgroundResource(R.drawable.bg_engine_badge_diesel);
+                holder.engineBadge.setVisibility(View.VISIBLE);
+            }
     }
 
     // Número total de items
@@ -62,7 +76,7 @@ public class MyRVAdapter extends RecyclerView.Adapter<MyRVAdapter.MyViewHolder> 
     // ---------------------------------------------------------------------------------------
     // --------- IMPLEMENTACION DE NUESTRO VIEW HOLDER ESPECÍFICO ----------------------------
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView marca, modelo;
+        TextView marca, modelo, engineBadge;
         ImageView img;
 
         MyViewHolder(View itemView) {
@@ -72,6 +86,8 @@ public class MyRVAdapter extends RecyclerView.Adapter<MyRVAdapter.MyViewHolder> 
             img = itemView.findViewById(R.id.imagenViewVehiculo);
             modelo = itemView.findViewById(R.id.textViewModelo);
             marca = itemView.findViewById(R.id.textViewMarca);
+            engineBadge = itemView.findViewById(R.id.textViewEngineBadge);
+
 
             //Mandar la posición de la tarjeta que se ha pulsado
             itemView.setOnClickListener(v -> {

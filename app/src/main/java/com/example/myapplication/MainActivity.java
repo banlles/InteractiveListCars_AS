@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements MyRVAdapter.OnIte
                 if (c.getTipoMotor().equals(tipoMotor))
                     filteredCars.add(c);
         } else if (id == R.id.OpcionDiesel) {
-            tipoMotor = "Diésel";
+            tipoMotor = "Diesel";
             for (Car c : allCars)
                 if (c.getTipoMotor().equals(tipoMotor))
                     filteredCars.add(c);

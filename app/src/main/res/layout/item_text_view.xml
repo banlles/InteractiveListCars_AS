@@ -19,20 +19,23 @@
         android:layout_height="wrap_content">
 
         <!-- Imagen del vehículo (más grande y horizontal) -->
+
+        <!-- Contenedor inferior de texto -->
+
         <ImageView
             android:id="@+id/imagenViewVehiculo"
             android:layout_width="0dp"
             android:layout_height="180dp"
-            android:scaleType="centerCrop"
-            android:contentDescription="@null"
             android:background="@drawable/rounded_mask"
             android:clipToOutline="true"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:contentDescription="@null"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:src="@tools:sample/backgrounds/scenic" />
 
-        <!-- Contenedor inferior de texto -->
         <LinearLayout
             android:id="@+id/infoContainer"
             android:layout_width="0dp"
@@ -78,6 +81,23 @@
                 android:background="#22000000" />
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/textViewEngineBadge"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_margin="12dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bd_engine_badge_default"
+            android:gravity="center"
+            android:text="G"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/imagenViewVehiculo"
+            app:layout_constraintTop_toTopOf="@id/imagenViewVehiculo" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
