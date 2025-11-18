@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements MyRVAdapter.OnIte
     // Al hacer clic en un coche abre la info detallada
     public void onItemClick(int position) {
         Intent i = new Intent(MainActivity.this, InfoShowCar.class);
-        i.putExtra("car", visibleCars.get(position));
+        i.putExtra("carList", visibleCars.get(position));
         activityLauncher.launch(i);
     }
 
@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements MyRVAdapter.OnIte
 
         } else if (id == R.id.OpcionJuego) {
             Intent i = new Intent(MainActivity.this, GameActivity.class);
+            i.putParcelableArrayListExtra("carList", allCars);
             activityLauncher.launch(i);
         }
         else

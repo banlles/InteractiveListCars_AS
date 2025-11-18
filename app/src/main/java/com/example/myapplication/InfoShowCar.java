@@ -17,7 +17,7 @@ public class InfoShowCar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_show_car);
 
-        Car car = getIntent().getParcelableExtra("car");
+        Car car = getIntent().getParcelableExtra("carList");
         if (car == null) return;
 
         TextView marca = findViewById(R.id.ShowInfoMarca);
