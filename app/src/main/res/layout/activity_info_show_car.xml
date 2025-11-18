@@ -121,6 +121,29 @@
             app:layout_constraintEnd_toEndOf="parent"
             tools:text="Transmisión: Manual" />
 
+        <Button
+            android:id="@+id/btnAbrirWeb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Abrir web"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnCompartir"
+            app:layout_constraintHorizontal_bias="0.509"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ShowInfoImage"
+            app:layout_constraintVertical_bias="0.631" />
+
+        <Button
+            android:id="@+id/btnCompartir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="28dp"
+            android:text="Compartir whatsap"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.631" />
+
         <!-- TEXTO EXTRA (si lo usas para mostrar el id del drawable o similar) -->
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,16 +4,18 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Car implements Parcelable {
+
     private String marca;
     private String modelo;
-    private String tipoMotor;   // Ej: "Gasolina", "Diesel", "Eléctrico"
-    private int potencia;       // en caballos (CV)
-    private int puertas;        // número de puertas
-    private String transmision; // Ej: "Manual" o "Automática"
-    private int imagen;         // recurso drawable
+    private String tipoMotor;
+    private int potencia;
+    private int puertas;
+    private String transmision;
+    private int imagen;
+    private String url; // 👈 aquí guardamos la web
 
-    public Car(String marca, String modelo, String tipoMotor,
-               int potencia, int puertas, String transmision, int imagen) {
+    public Car(String marca, String modelo, String tipoMotor, int potencia, int puertas,
+               String transmision, int imagen, String url) {
         this.marca = marca;
         this.modelo = modelo;
         this.tipoMotor = tipoMotor;
@@ -21,74 +23,10 @@ public class Car implements Parcelable {
         this.puertas = puertas;
         this.transmision = transmision;
         this.imagen = imagen;
+        this.url = url;
     }
 
-    // Constructor vacío (por si lo necesitas)
-    public Car() {
-    }
-
-    // Getters y setters
-    public String getMarca() {
-        return marca;
-    }
-
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
-
-    public String getModelo() {
-        return modelo;
-    }
-
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
-    }
-
-    public String getTipoMotor() {
-        return tipoMotor;
-    }
-
-    public void setTipoMotor(String tipoMotor) {
-        this.tipoMotor = tipoMotor;
-    }
-
-    public int getPotencia() {
-        return potencia;
-    }
-
-    public void setPotencia(int potencia) {
-        this.potencia = potencia;
-    }
-
-    public int getPuertas() {
-        return puertas;
-    }
-
-    public void setPuertas(int puertas) {
-        this.puertas = puertas;
-    }
-
-    public String getTransmision() {
-        return transmision;
-    }
-
-    public void setTransmision(String transmision) {
-        this.transmision = transmision;
-    }
-
-    public int getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(int imagen) {
-        this.imagen = imagen;
-    }
-
-    // ------------------------------------------------------------
-    // ----------- IMPLEMENTACIÓN DE PARCELABLE -------------------
-    // ------------------------------------------------------------
-
-    // Constructor usado al "desempaquetar" el objeto
+    // Constructor para reconstruir desde Parcel
     protected Car(Parcel in) {
         marca = in.readString();
         modelo = in.readString();
@@ -97,6 +35,7 @@ public class Car implements Parcelable {
         puertas = in.readInt();
         transmision = in.readString();
         imagen = in.readInt();
+        url = in.readString();
     }
 
     @Override
@@ -108,6 +47,7 @@ public class Car implements Parcelable {
         dest.writeInt(puertas);
         dest.writeString(transmision);
         dest.writeInt(imagen);
+        dest.writeString(url);
     }
 
     @Override
@@ -126,4 +66,37 @@ public class Car implements Parcelable {
             return new Car[size];
         }
     };
+
+    // Getters
+    public String getMarca() {
+        return marca;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public String getTipoMotor() {
+        return tipoMotor;
+    }
+
+    public int getPotencia() {
+        return potencia;
+    }
+
+    public int getPuertas() {
+        return puertas;
+    }
+
+    public String getTransmision() {
+        return transmision;
+    }
+
+    public int getImagen() {
+        return imagen;
+    }
+
+    public String getUrl() {
+        return url;
+    }
 }

@@ -59,8 +59,13 @@ public class MainActivity extends AppCompatActivity implements MyRVAdapter.OnIte
             for (Car c : allCars)
                 if (c.getTipoMotor().equals(tipoMotor))
                     filteredCars.add(c);
-        } else if (id == R.id.OpcionMostrarTodos)
-                    filteredCars = allCars;
+        } else if (id == R.id.OpcionMostrarTodos) {
+            filteredCars = allCars;
+
+        } else if (id == R.id.OpcionJuego) {
+            Intent i = new Intent(MainActivity.this, GameActivity.class);
+            activityLauncher.launch(i);
+        }
         else
             return super.onOptionsItemSelected(item);
 
