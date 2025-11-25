@@ -16,9 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements MyRVAdapter.OnItemClickListener {
-    ArrayList<Car> allCars = ArrayListCars.getVehiculos(); // Lista de coches
-    ArrayList<Car> visibleCars; // Lista de coches
-
+    private final ArrayList<Car> allCars = ArrayListCars.getVehiculos(); // Lista de coches
+    private ArrayList<Car> visibleCars; // Lista de coches
     RecyclerView rc; // Vista de lista
     MyRVAdapter mAdapter; // Adaptador para el RecyclerView
 
